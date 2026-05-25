@@ -251,6 +251,19 @@ Retrieve the full registered manifest for a model.
 
 Register a new model manifest. The request body must be a valid manifest (see S3). The registry validates the manifest against the schema and rejects malformed documents.
 
+### Registration modes
+
+The registry supports two registration modes controlled by the `heartbeat_endpoint` field:
+
+**Catalog entry** — omit `heartbeat_endpoint` (or set to `null`). Use for adapter specs, reference implementations, and models you want discoverable before deploying a live service. The routing engine treats catalog entries as always-available and scores them using their declared `perf_profile`.
+
+**Live service** — provide a `heartbeat_endpoint` URL. The registry polls the endpoint every 30 seconds. Models are marked `degraded` after 30 s staleness and `unavailable` after 90 s or 3 consecutive failures. Only live services participate in real-time availability-weighted routing.
+
+The heartbeat endpoint must return any valid JSON object. Recommended response shape:
+```json
+{"status": "ok", "capacity_pct": 0.85}
+```
+
 **Response:** HTTP `201 Created` with the registered manifest and a generated `registered_at` timestamp.
 
 **Errors:**
