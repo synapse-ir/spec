@@ -41,8 +41,9 @@ SYNAPSE does not compete with MCP or A2A. It builds on top of them.
 
 ## Reference implementation
 
-- [adapter-sdk](https://github.com/synapse-ir/adapter-sdk) — Python + TypeScript SDK
-- [registry](https://github.com/synapse-ir/registry) — FastAPI registry server
+- [Project homepage](https://synapse-ir.github.io) — live registry stats, quick start, and model browser
+- [adapter-sdk](https://github.com/synapse-ir/adapter-sdk) — Python SDK ([docs](https://synapse-ir.github.io/adapter-sdk/))
+- [registry](https://github.com/synapse-ir/registry) — FastAPI registry server ([live](https://registry-production-4b29.up.railway.app))
 - [adapters](https://github.com/synapse-ir/adapters) — Community adapter collection
 
 ## Versioning
